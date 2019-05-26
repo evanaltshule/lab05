@@ -6,6 +6,7 @@ public class Post
 	private String message;
 	private ArrayList<String> replies;
 	private User user;
+	private static int posts = 1;
 	private int postID;
 	private int parentID;
 
@@ -16,6 +17,8 @@ public class Post
 		this.message = message;
 		this.user = user;
 		this.parentID = parentID;
+		this.postID = posts;
+		posts++;
 	}
 
 	public ArrayList<String> getTags(){
