@@ -41,5 +41,22 @@ public class Post
 		return parentID;
 	}
 
-
-
+	public void print(){
+		System.out.println("--");
+		System.out.println("Post ID: " + postID);
+		System.out.print("Tags: ");
+		{
+			for (String tag : tags)
+			{
+				System.out.print(tag + " ");
+			}
+			System.out.println();
+		}
+		if (parentID != -1)
+		{
+			System.out.println("Re: to Post ID: " + parentID);
+		}
+		System.out.println("Message: " + message);
+		System.out.println("--");
+	}
+}
