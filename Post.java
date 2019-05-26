@@ -4,7 +4,9 @@ public class Post
 {
 	private ArrayList<String> tags;
 	private String message;
+	private ArrayList<String> replies;
 	private User user;
+	private int postID;
 	private int parentID;
 
 
@@ -26,6 +28,10 @@ public class Post
 
 	public User getUser(){
 		return user;
+	}
+
+	public int getPostID(){
+		return postID;
 	}
 
 	public int getParentID(){
