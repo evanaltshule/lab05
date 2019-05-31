@@ -20,9 +20,10 @@ public class User implements Observer
 		return userID;
 	}
 
+	@Override
 	public void update(Post p)
 	{
-		System.out.println("***** Updating UserID: " + p.getUser() + " *****");
+		System.out.println("***** Updating UserID: " + userID + " *****");
 		p.print();
 	}
 }

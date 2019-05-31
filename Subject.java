@@ -4,12 +4,9 @@ import java.util.*;
 
 public interface Subject
 {
-	public void registerUserTag(String tag, User user)
-	{}
+	public void registerUserTag(String tag, User user);
 
-	public void removeUserTag(String tag, User user)
-	{}
+	public void removeUserTag(String tag, User user);
 
-	public void notifyUsers(Post p)
-	{}
+	public void notifyUsers(Post p);
 }
