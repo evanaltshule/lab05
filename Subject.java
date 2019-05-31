@@ -2,7 +2,7 @@
 import java.util.*;
 
 
-public class Subject extends Observable
+public interface Subject
 {
 	public void registerUserTag(String tag, User user)
 	{}
