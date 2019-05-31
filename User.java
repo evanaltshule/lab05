@@ -15,7 +15,14 @@ public class User implements Observer
 		users++;
 	}
 
-	public int getUserID{
+	public int getUserID
+	{
 		return userID;
+	}
+
+	public void update(Post p)
+	{
+		System.out.println("***** Updating UserID: " + p.getUser() + " *****");
+		p.print();
 	}
 }

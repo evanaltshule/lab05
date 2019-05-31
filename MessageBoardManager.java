@@ -1,7 +1,25 @@
 //Evan Altshule and George Kripac
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MessageBoardManager implements Subject
 {
+
+	private ArrayList<Observer> observers;
+	private Post post;
+	private HashMap<String, ArrayList<User>> map;
+
+	public MessageBoardManager()
+	{
+		obervers = new ArrayList<Observer>;
+	}
+
+	public void registerUserTag(String tag, User user)
+	{
+
+	}
+
 	public void addPost(Post p)
 	{}
 
