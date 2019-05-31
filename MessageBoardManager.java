@@ -1,6 +1,6 @@
 //Evan Altshule and George Kripac
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class MessageBoardManager implements Subject
@@ -8,7 +8,7 @@ public class MessageBoardManager implements Subject
 
 	private ArrayList<Observer> observers;
 	private Post post;
-	private HashMap<String, ArrayList<User>> map;
+	private LinkedHashMap<String, ArrayList<User>> map;
 
 	public MessageBoardManager()
 	{
