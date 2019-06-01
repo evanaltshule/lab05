@@ -49,17 +49,21 @@ public class MessageBoardManager implements Subject
 	{
 		ArrayList<String> tags = p.getTags();
 		HashSet<User> usersToNotify = new HashSet<User>();
-		ArrayList<User> users;
 		for(String tag: tags){
 			if(map.containsKey(tag)){
 				for(User user: map.get(tag)){
+					if(p.getUser() != user)
 					usersToNotify.add(user);
 				}
 			}
 			}
+		ArrayList<User> users = new ArrayList<User>();
 		Iterator<User> iterator = usersToNotify.iterator();
 		while(iterator.hasNext()){
-			(iterator.next()).update(p);
+			users.add(iterator.next());
+		}
+		for(int i = users.size()-1; i >=0;i--){
+			users.get(i).update(p);
 		}
 		
 	}
@@ -74,6 +78,7 @@ public class MessageBoardManager implements Subject
 			System.out.println("+++ Adding Post to MessageBoard +++");
 			p.print();
 			System.out.println("\n++++++++++++++++++++++++++++++++++++\n");
+			notifyUsers(p);
 		}
 	}
 
@@ -114,7 +119,7 @@ public class MessageBoardManager implements Subject
 				}
 			}
 		}
-		System.out.println("##############################");
+		System.out.println("##############################\n");
 	}
 
 	public void displayKeywordMessages(String keyword)
@@ -128,7 +133,7 @@ public class MessageBoardManager implements Subject
 				post.print();
 			}
 		}
-		System.out.println("##############################");
+		System.out.println("##############################\n");
 	}
 
 	public void displayThread(int postID)
@@ -144,7 +149,7 @@ public class MessageBoardManager implements Subject
 
 			displayThreadHelper(post);
 		}
-		System.out.println("##############################");
+		System.out.println("##############################\n");
 	}
 
 	private void displayThreadHelper(Post post)
@@ -159,11 +164,13 @@ public class MessageBoardManager implements Subject
 	public void displayUserPosts(User user)
 	{
 		System.out.println("##### Displaying all posts for User ID: " + user.getUserID() + " #####");
-		for (Post post : user.getPosts())
+		for (Post post : posts)
 		{
-			post.print();
+			if(post.getUser() == user){
+				post.print();
+			}
 		}
-		System.out.println("##############################");
+		System.out.println("##############################\n");
 	}
 
 	private Post getPost(int postID)
