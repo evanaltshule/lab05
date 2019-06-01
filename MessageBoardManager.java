@@ -82,6 +82,7 @@ public class MessageBoardManager implements Subject
 	public void displayTagMessages(String tag)
 	{
 		System.out.println("##### Displaying posts with tag: " + tag + " #####");
+		tag = tag.toLowerCase();
 		if (map.containsKey(tag))
 		{
 			for (Post post : posts)
@@ -111,21 +112,32 @@ public class MessageBoardManager implements Subject
 	public void displayThread(int postID)
 	{
 		System.out.println("##### Displaying thread for PostID: " + postID + " #####");
-		while (postID != -1)
+		Post post = getPost(postID);
+		if (post != null)
 		{
-			Post post = getPost(postID);
+			while (postID.getParentID() != -1)
+			{
+				post = getPost(post.getParentID());
+			}
 
-
+			displayThreadHelper(post);
+		}
 		System.out.println("##############################");
 	}
 
-	private void displayThreadHelper()
+	private void displayThreadHelper(Post post)
 	{
-	
+		post.print();
+		for (Post tempPost : post.getReplies())
+		{
+			displayThreadHelper(tempPost);
+		}
 	}
 
 	public void displayUserPosts(User user)
-	{}
+	{
+		
+	}
 
 	private Post getPost(int postID)
 	{
