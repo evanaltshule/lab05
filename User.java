@@ -53,6 +53,6 @@ public class User implements Observer
 	{
 		System.out.println("***** Updating UserID: " + userID + " *****");
 		p.print();
-		System.out.println("******************************");
+		System.out.println("******************************\n");
 	}
 }
