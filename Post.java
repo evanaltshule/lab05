@@ -15,6 +15,10 @@ public class Post
 	public Post(ArrayList<String> tags, String message, User user, int parentID)
 	{
 		this.tags = tags;
+		for(int i = 0; i < tags.size(); i++) {
+			this.tags.add(tags.get(i));
+		}
+		replies = new ArrayList<Post>();
 		this.message = message;
 		this.user = user;
 		this.parentID = parentID;
@@ -61,6 +65,7 @@ public class Post
 			}
 			System.out.println();
 		}
+		System.out.println("Posted by User ID: " + user.getUserID());
 		if (parentID != -1)
 		{
 			System.out.println("Re: to Post ID: " + parentID);

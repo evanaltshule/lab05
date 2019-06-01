@@ -77,17 +77,96 @@ public class MessageBoardManager implements Subject
 	}
 
 	public void addReply(Post reply)
-	{}
+	{
+		boolean foundParent = false;
+		for(Post p: posts){
+			if(reply.getParentID() == p.getPostID()){
+				p.addReply(reply);
+				posts.add(reply);
+				foundParent = true;
+			}
+		}
+		if(foundParent == true){
+			System.out.println("\n+++ Adding Post to MessageBoard +++");
+			reply.print();
+			System.out.println("++++++++++++++++++++++++++++++++++++");
+			notifyUsers(reply);
+		}
+		if(foundParent == false){
+			System.out.println("ERROR: Parent does not exist!");
+		}
+	}
 
 	public void displayTagMessages(String tag)
-	{}
+	{
+		System.out.println("##### Displaying posts with tag: " + tag + " #####");
+		tag = tag.toLowerCase();
+		if (map.containsKey(tag))
+		{
+			for (Post post : posts)
+			{
+				if (post.getTags().contains(tag))
+				{
+					post.print();
+				}
+			}
+		}
+		System.out.println("##############################");
+	}
 
 	public void displayKeywordMessages(String keyword)
-	{}
+	{
+		System.out.println("##### Displaying posts with keyword: " + keyword + " #####");
+		for (Post post : posts)
+		{
+			if (post.getMessage().contains(keyword))
+			{
+				post.print();
+			}
+		}
+		System.out.println("##############################");
+	}
 
 	public void displayThread(int postID)
-	{}
+	{
+		System.out.println("##### Displaying thread for PostID: " + postID + " #####");
+		Post post = getPost(postID);
+		if (post != null)
+		{
+			while (postID.getParentID() != -1)
+			{
+				post = getPost(post.getParentID());
+			}
+
+			displayThreadHelper(post);
+		}
+		System.out.println("##############################");
+	}
+
+	private void displayThreadHelper(Post post)
+	{
+		post.print();
+		for (Post tempPost : post.getReplies())
+		{
+			displayThreadHelper(tempPost);
+		}
+	}
 
 	public void displayUserPosts(User user)
-	{}
+	{
+		
+	}
+
+	private Post getPost(int postID)
+	{
+		for (Post post : posts)
+		{
+			if (post.getPostID() == postID)
+			{
+				return Post;
+			}
+		}
+		System.out.println("ERROR: postID does not exist");
+		return null;
+	}
 }
