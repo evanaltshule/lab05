@@ -14,11 +14,12 @@ public class Post
 
 	public Post(ArrayList<String> tags, String message, User user, int parentID)
 	{
-		this.tags = tags;
+		replies = new ArrayList<Post>();
+		//this.tags = new ArrayList<String>(tags);
+		this.tags = new ArrayList<String>();
 		for(int i = 0; i < tags.size(); i++) {
 			this.tags.add(tags.get(i));
 		}
-		replies = new ArrayList<Post>();
 		this.message = message;
 		this.user = user;
 		this.parentID = parentID;
