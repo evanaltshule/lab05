@@ -56,7 +56,7 @@ public class MessageBoardManager implements Subject
 					usersToNotify.add(user);
 				}
 			}
-			}
+		}
 		ArrayList<User> users = new ArrayList<User>();
 		Iterator<User> iterator = usersToNotify.iterator();
 		while(iterator.hasNext()){
@@ -77,7 +77,7 @@ public class MessageBoardManager implements Subject
 			posts.add(p);
 			System.out.println("+++ Adding Post to MessageBoard +++");
 			p.print();
-			System.out.println("\n++++++++++++++++++++++++++++++++++++\n");
+			System.out.println("++++++++++++++++++++++++++++++++++++\n");
 			notifyUsers(p);
 		}
 	}
@@ -95,9 +95,9 @@ public class MessageBoardManager implements Subject
 			}
 		}
 		if(foundParent == true){
-			System.out.println("\n+++ Adding Post to MessageBoard +++");
+			System.out.println("+++ Adding Post to MessageBoard +++");
 			reply.print();
-			System.out.println("++++++++++++++++++++++++++++++++++++");
+			System.out.println("++++++++++++++++++++++++++++++++++++\n");
 			notifyUsers(reply);
 		}
 		if(foundParent == false){
