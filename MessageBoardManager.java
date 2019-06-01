@@ -17,23 +17,30 @@ public class MessageBoardManager implements Subject
 
 	public void registerUserTag(String tag, User user)
 	{
-		if(map.containsKey(tag)){
-			(map.get(tag)).add(user);
+		System.out.println("^^^^^ Adding tag: "+ tag + " for User ID: " +user + "^^^^^");
+		if(map.containsKey(tag.toLowerCase())){
+			ArrayList<User> users = map.get(tag.toLowerCase());
+			if(users == NULL){
+				users = new ArrayList<User>;
+				users.add(user);
+				map.put(tag.toLowerCase(), users);
+			}
+			else{
+				users.add(user);
+			}
 		}
 		else{
 			ArrayList<User> users = new ArrayList<User>;
 			users.add(user);
-			map.put(tag, users)
+			map.put(tag.toLowerCase(), users)
 		}
 	}
 
 	public void removeUserTag(String tag, User user)
 	{
-		if(map.containsKey(tag)){
-			(map.get(tag)).remove(User);
-		}
-		else{
-			System.out.println("That tag does not exist!");
+		if(map.containsKey(tag.toLowerCase())){
+			System.out.println("^^^^^ Removing tag: " + tag + " for User ID: " + user.getUserID() + " ^^^^^");
+			(map.get(tag.toLowerCase())).remove(User);
 		}
 	}
 
