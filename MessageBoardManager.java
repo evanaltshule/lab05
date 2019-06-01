@@ -96,7 +96,17 @@ public class MessageBoardManager implements Subject
 	}
 
 	public void displayKeywordMessages(String keyword)
-	{}
+	{
+		System.out.println("##### Displaying posts with keyword: " + keyword + " #####");
+		for (Post post : posts)
+		{
+			if (post.getMessage().contains(keyword))
+			{
+				post.print();
+			}
+		}
+		System.out.println("##############################");
+	}
 
 	public void displayThread(int postID)
 	{}
