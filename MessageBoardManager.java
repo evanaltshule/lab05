@@ -2,6 +2,7 @@
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.HashSet;
 
 public class MessageBoardManager implements Subject
 {
@@ -12,7 +13,7 @@ public class MessageBoardManager implements Subject
 
 	public MessageBoardManager()
 	{
-		obervers = new ArrayList<Observer>;
+		obervers = new ArrayList<Observer>();
 	}
 
 	public void registerUserTag(String tag, User user)
@@ -21,7 +22,7 @@ public class MessageBoardManager implements Subject
 		if(map.containsKey(tag.toLowerCase())){
 			ArrayList<User> users = map.get(tag.toLowerCase());
 			if(users == NULL){
-				users = new ArrayList<User>;
+				users = new ArrayList<User>();
 				users.add(user);
 				map.put(tag.toLowerCase(), users);
 			}
@@ -30,9 +31,9 @@ public class MessageBoardManager implements Subject
 			}
 		}
 		else{
-			ArrayList<User> users = new ArrayList<User>;
+			ArrayList<User> users = new ArrayList<User>();
 			users.add(user);
-			map.put(tag.toLowerCase(), users)
+			map.put(tag.toLowerCase(), users);
 		}
 	}
 
@@ -45,7 +46,23 @@ public class MessageBoardManager implements Subject
 	}
 
 	public void notifyUsers(Post p)
-	{}
+	{
+		ArrayList<String> tags = p.getTags();
+		HashSet<User> usersToNotify = new HashSet<User>();
+		ArrayList<User> users;
+		for(String tag: tags){
+			if(map.containsKey(tag)){
+				for(User user: map.get(tag)){
+					usersToNotify.add(user);
+				}
+			}
+			}
+		Iterator<User> iterator = usersToNotify.iterator();
+		while(iterator.hasNext()){
+			(iterator.next()).update();
+		}
+		}
+	}
 
 	public void addPost(Post p)
 	{}
