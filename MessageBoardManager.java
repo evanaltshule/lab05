@@ -69,6 +69,7 @@ public class MessageBoardManager implements Subject
 			System.out.println("Already been posted!")
 		}
 		else{
+			posts.add(p);
 			System.out.println("+++ Adding Post to MessageBoard +++");
 			System.out.println(p.print());
 			System.out.println("\n++++++++++++++++++++++++++++++++++++\n");
