@@ -120,6 +120,7 @@ public class MessageBoardManager implements Subject
 	public void displayKeywordMessages(String keyword)
 	{
 		System.out.println("##### Displaying posts with keyword: " + keyword + " #####");
+		keyword = keyword.toLowerCase();
 		for (Post post : posts)
 		{
 			if (post.getMessage().contains(keyword))
