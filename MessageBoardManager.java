@@ -3,17 +3,16 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.HashSet;
+import java.util.Iterator;
 
 public class MessageBoardManager implements Subject
 {
-
-	private ArrayList<Observer> observers;
 	private Post post;
 	private LinkedHashMap<String, ArrayList<User>> map;
 
 	public MessageBoardManager()
 	{
-		obervers = new ArrayList<Observer>();
+
 	}
 
 	public void registerUserTag(String tag, User user)
@@ -21,7 +20,7 @@ public class MessageBoardManager implements Subject
 		System.out.println("^^^^^ Adding tag: "+ tag + " for User ID: " +user + "^^^^^");
 		if(map.containsKey(tag.toLowerCase())){
 			ArrayList<User> users = map.get(tag.toLowerCase());
-			if(users == NULL){
+			if(users == null){
 				users = new ArrayList<User>();
 				users.add(user);
 				map.put(tag.toLowerCase(), users);
@@ -41,7 +40,7 @@ public class MessageBoardManager implements Subject
 	{
 		if(map.containsKey(tag.toLowerCase())){
 			System.out.println("^^^^^ Removing tag: " + tag + " for User ID: " + user.getUserID() + " ^^^^^");
-			(map.get(tag.toLowerCase())).remove(User);
+			(map.get(tag.toLowerCase())).remove(user);
 		}
 	}
 
@@ -59,9 +58,9 @@ public class MessageBoardManager implements Subject
 			}
 		Iterator<User> iterator = usersToNotify.iterator();
 		while(iterator.hasNext()){
-			(iterator.next()).update();
+			(iterator.next()).update(p);
 		}
-		}
+		
 	}
 
 	public void addPost(Post p)
