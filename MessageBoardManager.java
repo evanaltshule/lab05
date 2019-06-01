@@ -7,7 +7,7 @@ import java.util.Iterator;
 
 public class MessageBoardManager implements Subject
 {
-	private Post post;
+	private ArrayList<Post> posts;
 	private LinkedHashMap<String, ArrayList<User>> map;
 
 	public MessageBoardManager()
@@ -64,7 +64,16 @@ public class MessageBoardManager implements Subject
 	}
 
 	public void addPost(Post p)
-	{}
+	{
+		if(posts.contains(p)){
+			System.out.println("Already been posted!")
+		}
+		else{
+			System.out.println("+++ Adding Post to MessageBoard +++");
+			System.out.println(p.print());
+			System.out.println("\n++++++++++++++++++++++++++++++++++++\n");
+		}
+	}
 
 	public void addReply(Post reply)
 	{}
