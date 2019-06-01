@@ -81,7 +81,7 @@ public class MessageBoardManager implements Subject
 
 	public void displayTagMessages(String tag)
 	{
-		System.out.println("##### Displaying posts with tag: " + cooking + " #####");
+		System.out.println("##### Displaying posts with tag: " + tag + " #####");
 		if (map.containsKey(tag))
 		{
 			for (Post post : posts)
@@ -91,7 +91,7 @@ public class MessageBoardManager implements Subject
 					post.print();
 				}
 			}
-
+			System.out.println("##############################");
 		}
 	}
 
