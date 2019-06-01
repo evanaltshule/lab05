@@ -80,11 +80,13 @@ public class MessageBoardManager implements Subject
 	public void addReply(Post reply)
 	{	
 		boolean foundParent = false;
-		for(Post p: posts){
-			if(reply.getParentID() == p.getPostID()){
-				p.addReply(reply);
-				posts.add(reply);
-				foundParent = true;
+		if(reply.getParentID() != -1) {
+			for(int i = 0; i < posts.size(); i++) {
+				if(reply.getParentID() == posts.get(i).getPostID()) {
+					posts.get(i).addReply(reply);
+					posts.add(reply);
+					foundParent = true;
+				}
 			}
 		}
 		if(foundParent == true){
