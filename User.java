@@ -27,10 +27,13 @@ public class User implements Observer
 
 	public void addPost(Post post)
 	{
-		posts.add(post);
+		if (!posts.contains(post))
+		{
+			posts.add(post);
+		}
 	}
 
-	public int getUserID
+	public int getUserID()
 	{
 		return userID;
 	}
