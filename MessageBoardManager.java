@@ -12,12 +12,13 @@ public class MessageBoardManager implements Subject
 
 	public MessageBoardManager()
 	{
-
+		posts = new ArrayList<Post>();
+		map = new LinkedHashMap<String, ArrayList<User>>();
 	}
 
 	public void registerUserTag(String tag, User user)
 	{
-		System.out.println("^^^^^ Adding tag: "+ tag + " for User ID: " +user + "^^^^^");
+		System.out.println("^^^^^ Adding tag: "+ tag + " for User ID: " +user.getUserID() + "^^^^^\n");
 		if(map.containsKey(tag.toLowerCase())){
 			ArrayList<User> users = map.get(tag.toLowerCase());
 			if(users == null){
@@ -66,18 +67,18 @@ public class MessageBoardManager implements Subject
 	public void addPost(Post p)
 	{
 		if(posts.contains(p)){
-			System.out.println("Already been posted!")
+			System.out.println("Already been posted!");
 		}
 		else{
 			posts.add(p);
 			System.out.println("+++ Adding Post to MessageBoard +++");
-			System.out.println(p.print());
+			p.print();
 			System.out.println("\n++++++++++++++++++++++++++++++++++++\n");
 		}
 	}
 
 	public void addReply(Post reply)
-	{
+	{	
 		boolean foundParent = false;
 		for(Post p: posts){
 			if(reply.getParentID() == p.getPostID()){
@@ -133,7 +134,7 @@ public class MessageBoardManager implements Subject
 		Post post = getPost(postID);
 		if (post != null)
 		{
-			while (postID.getParentID() != -1)
+			while (post.getParentID() != -1)
 			{
 				post = getPost(post.getParentID());
 			}
@@ -154,7 +155,12 @@ public class MessageBoardManager implements Subject
 
 	public void displayUserPosts(User user)
 	{
-		
+		System.out.println("##### Displaying all posts for User ID: " + user.getUserID() + " #####");
+		for (Post post : user.getPosts())
+		{
+			post.print();
+		}
+		System.out.println("##############################");
 	}
 
 	private Post getPost(int postID)
@@ -163,7 +169,7 @@ public class MessageBoardManager implements Subject
 		{
 			if (post.getPostID() == postID)
 			{
-				return Post;
+				return post;
 			}
 		}
 		System.out.println("ERROR: postID does not exist");
