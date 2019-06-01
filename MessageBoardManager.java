@@ -109,8 +109,34 @@ public class MessageBoardManager implements Subject
 	}
 
 	public void displayThread(int postID)
-	{}
+	{
+		System.out.println("##### Displaying thread for PostID: " + postID + " #####");
+		while (postID != -1)
+		{
+			Post post = getPost(postID);
+
+
+		System.out.println("##############################");
+	}
+
+	private void displayThreadHelper()
+	{
+	
+	}
 
 	public void displayUserPosts(User user)
 	{}
+
+	private Post getPost(int postID)
+	{
+		for (Post post : posts)
+		{
+			if (post.getPostID() == postID)
+			{
+				return Post;
+			}
+		}
+		System.out.println("ERROR: postID does not exist");
+		return null;
+	}
 }
