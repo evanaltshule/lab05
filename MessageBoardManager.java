@@ -66,12 +66,12 @@ public class MessageBoardManager implements Subject
 	public void addPost(Post p)
 	{
 		if(posts.contains(p)){
-			System.out.println("Already been posted!")
+			System.out.println("Already been posted!");
 		}
 		else{
 			posts.add(p);
 			System.out.println("+++ Adding Post to MessageBoard +++");
-			System.out.println(p.print());
+			p.print();
 			System.out.println("\n++++++++++++++++++++++++++++++++++++\n");
 		}
 	}
@@ -141,7 +141,7 @@ public class MessageBoardManager implements Subject
 		{
 			post.print();
 		}
-		System.out.println("##############################")
+		System.out.println("##############################");
 	}
 
 	private Post getPost(int postID)
@@ -150,7 +150,7 @@ public class MessageBoardManager implements Subject
 		{
 			if (post.getPostID() == postID)
 			{
-				return Post;
+				return post;
 			}
 		}
 		System.out.println("ERROR: postID does not exist");
