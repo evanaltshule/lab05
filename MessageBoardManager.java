@@ -91,8 +91,8 @@ public class MessageBoardManager implements Subject
 					post.print();
 				}
 			}
-			System.out.println("##############################");
 		}
+		System.out.println("##############################");
 	}
 
 	public void displayKeywordMessages(String keyword)
