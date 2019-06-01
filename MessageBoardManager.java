@@ -115,7 +115,7 @@ public class MessageBoardManager implements Subject
 		Post post = getPost(postID);
 		if (post != null)
 		{
-			while (postID.getParentID() != -1)
+			while (post.getParentID() != -1)
 			{
 				post = getPost(post.getParentID());
 			}
