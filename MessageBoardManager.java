@@ -136,10 +136,12 @@ public class MessageBoardManager implements Subject
 
 	public void displayUserPosts(User user)
 	{
+		System.out.println("##### Displaying all posts for User ID: " + user.getUserID() + " #####");
 		for (Post post : user.getPosts())
 		{
 			post.print();
 		}
+		System.out.println("##############################")
 	}
 
 	private Post getPost(int postID)
