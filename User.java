@@ -15,12 +15,27 @@ public class User implements Observer
 		userID = users;
 	}
 
+	public void addTag(String tag)
+	{
+		subscribed.add(tag);
+	}
+
+	public void removeTag(String tag)
+	{
+		subscribed.remove(tag);
+	}
+
+	public void addPost(Post post)
+	{
+		posts.add(post);
+	}
+
 	public int getUserID
 	{
 		return userID;
 	}
 
-	public ArrayList<String> subscribed()
+	public ArrayList<String> getTags()
 	{
 		return subscribed;
 	}
