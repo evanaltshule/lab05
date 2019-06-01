@@ -77,25 +77,7 @@ public class MessageBoardManager implements Subject
 	}
 
 	public void addReply(Post reply)
-	{
-		boolean foundParent = false;
-		for(Post p: posts){
-			if(reply.getParentID() == p.getPostID()){
-				p.addReply(reply);
-				posts.add(reply);
-				foundParent = true;
-			}
-		}
-		if(foundParent == true){
-			System.out.println("\n+++ Adding Post to MessageBoard +++");
-			reply.print();
-			System.out.println("++++++++++++++++++++++++++++++++++++");
-			notifyUsers(reply);
-		}
-		if(foundParent == false){
-			System.out.println("ERROR: Parent does not exist!");
-		}
-	}
+	{}
 
 	public void displayTagMessages(String tag)
 	{
@@ -154,7 +136,10 @@ public class MessageBoardManager implements Subject
 
 	public void displayUserPosts(User user)
 	{
-		
+		for (Post post : user.getPosts())
+		{
+			post.print();
+		}
 	}
 
 	private Post getPost(int postID)
