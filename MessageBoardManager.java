@@ -12,12 +12,13 @@ public class MessageBoardManager implements Subject
 
 	public MessageBoardManager()
 	{
-
+		posts = new ArrayList<Post>();
+		map = new LinkedHashMap<String, ArrayList<User>>();
 	}
 
 	public void registerUserTag(String tag, User user)
 	{
-		System.out.println("^^^^^ Adding tag: "+ tag + " for User ID: " +user + "^^^^^");
+		System.out.println("^^^^^ Adding tag: "+ tag + " for User ID: " +user.getUserID() + "^^^^^\n");
 		if(map.containsKey(tag.toLowerCase())){
 			ArrayList<User> users = map.get(tag.toLowerCase());
 			if(users == null){
@@ -77,7 +78,25 @@ public class MessageBoardManager implements Subject
 	}
 
 	public void addReply(Post reply)
-	{}
+	{	
+		boolean foundParent = false;
+		for(Post p: posts){
+			if(reply.getParentID() == p.getPostID()){
+				p.addReply(reply);
+				posts.add(reply);
+				foundParent = true;
+			}
+		}
+		if(foundParent == true){
+			System.out.println("\n+++ Adding Post to MessageBoard +++");
+			reply.print();
+			System.out.println("++++++++++++++++++++++++++++++++++++");
+			notifyUsers(reply);
+		}
+		if(foundParent == false){
+			System.out.println("ERROR: Parent does not exist!");
+		}
+	}
 
 	public void displayTagMessages(String tag)
 	{
