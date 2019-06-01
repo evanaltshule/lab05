@@ -1,10 +1,11 @@
 //Evan Altshule and George Kripac
+import java.util.ArrayList;
 
 public class Post
 {
 	private ArrayList<String> tags;
 	private String message;
-	private ArrayList<String> replies;
+	private ArrayList<Post> replies;
 	private User user;
 	private static int posts = 1;
 	private int postID;
@@ -39,6 +40,14 @@ public class Post
 
 	public int getParentID(){
 		return parentID;
+	}
+
+	public ArrayList<Post> getReplies(){
+		return replies;
+	}
+
+	public void addReply(Post p){
+		replies.add(p);
 	}
 
 	public void print(){
