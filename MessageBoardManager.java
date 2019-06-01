@@ -80,7 +80,20 @@ public class MessageBoardManager implements Subject
 	{}
 
 	public void displayTagMessages(String tag)
-	{}
+	{
+		System.out.println("##### Displaying posts with tag: " + cooking + " #####");
+		if (map.containsKey(tag))
+		{
+			for (Post post : posts)
+			{
+				if (post.getTags().contains(tag))
+				{
+					post.print();
+				}
+			}
+
+		}
+	}
 
 	public void displayKeywordMessages(String keyword)
 	{}
