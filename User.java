@@ -4,15 +4,15 @@ import java.util.*;
 
 public class User implements Observer
 {
-	private static int users = 1;
+	private static int users = 0;
 	private int userID;
 	private ArrayList<String> subscribed = new ArrayList<String>();
 	private ArrayList<Post> posts = new ArrayList<Post>();
 
 	public User()
 	{
-		userID = users;
 		users++;
+		userID = users;
 	}
 
 	public int getUserID
