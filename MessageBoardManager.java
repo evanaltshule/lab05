@@ -16,7 +16,7 @@ public class MessageBoardManager implements Subject
 		map = new LinkedHashMap<String, ArrayList<User>>();
 	}
 
-	public ArrayList<String> getPosts(){
+	public ArrayList<Post> getPosts(){
 		return posts;
 	}
 
