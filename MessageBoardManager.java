@@ -75,7 +75,7 @@ public class MessageBoardManager implements Subject
 	public void addPost(Post p)
 	{
 		if(posts.contains(p)){
-			System.out.println("Already been posted!");
+			System.out.println("ERROR: Already been posted!\n");
 		}
 		else{
 			posts.add(p);
@@ -105,7 +105,7 @@ public class MessageBoardManager implements Subject
 			notifyUsers(reply);
 		}
 		if(foundParent == false){
-			System.out.println("ERROR: Parent does not exist!");
+			System.out.println("ERROR: Parent does not exist!\n");
 		}
 	}
 
