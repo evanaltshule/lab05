@@ -16,6 +16,10 @@ public class MessageBoardManager implements Subject
 		map = new LinkedHashMap<String, ArrayList<User>>();
 	}
 
+	public ArrayList<String> getPosts(){
+		return posts;
+	}
+
 	public void registerUserTag(String tag, User user)
 	{
 		System.out.println("^^^^^ Adding tag: "+ tag + " for User ID: " +user.getUserID() + "^^^^^\n");
