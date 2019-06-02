@@ -19,9 +19,18 @@ public class Lab05 {
         tags.add("cooking");
         Post p1 = new Post(tags, "Cooking is fun!", u1, -1);
         messageBoard.addPost(p1);
+
+        //Add duplicate post; expect error message
+        messageBoard.addPost(p1);
         
         // Removing u2 from the "cooking" tag
         messageBoard.removeUserTag("cooking", u2);
+
+        ArrayList<String> tags3 = new ArrayList<String>();
+        tags3.add("food");
+        tags3.add("cooking");
+        Post p3 = new Post(tags3, "Cooking is okay!", u1, -1);
+        messageBoard.addPost(p3);
         
         // Creating a reply to p1
         Post p1_1 = new Post(p1.getTags(), "I agree!", u3, p1.getPostID());
@@ -34,6 +43,20 @@ public class Lab05 {
         // Creating a reply to reply p1_1
         Post p1_1_1 = new Post(p1_1.getTags(), "Mayo is gross.", u2, p1_1.getPostID());
         messageBoard.addReply(p1_1_1);
+
+        //Creating replies to p1_1_1
+        Post p1_1_1_1 = new Post(p1_1_1.getTags(), "No its not!", u1, p1_1_1.getPostID());
+        messageBoard.addReply(p1_1_1_1);
+
+        Post p1_1_2 = new Post(p1_1.getTags(), "Mayo is good.", u3, p1_1.getPostID());
+        messageBoard.addReply(p1_1_2);
+
+        //Error post (parent does not exist)
+        Post errorReply = new Post(tags, "I am an error", u2, -11);
+        messageBoard.addReply(errorReply);
+
+        // Displays all posts containing the tag "cooking"
+        messageBoard.displayTagMessages("cooking");
         
         // Displays entire thread for p1_1_1's hierarchy
         messageBoard.displayThread(p1_1_1.getPostID());
@@ -47,14 +70,18 @@ public class Lab05 {
         tags2.add("hockey");
         Post p2 = new Post(tags2, "Go Kings Go!", u3, -1);
         messageBoard.addPost(p2);
-        
-        // Displays all posts containing the tag "cooking"
-        messageBoard.displayTagMessages("cooking");
+
+        Post p4 = new Post(tags2, "Go Lakers!", u2, -1);
+        messageBoard.addPost(p4);
+
+        Post p4_1 = new Post(tags2, "Lakers aren't a hockey team, go Penguins!", u3, p4.getPostID());
+        messageBoard.addReply(p4_1);
         
         // Displays all posts containing the keyword "fun"
         messageBoard.displayKeywordMessages("fun");
-        
-        // Displays all posts
+        // Displays all posts containing the keyword "go"
+        messageBoard.displayKeywordMessages("go");
+        // Displays all posts containing the keyword "agree"
         messageBoard.displayKeywordMessages("AgrEE");
     }
 }
