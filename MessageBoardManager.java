@@ -132,7 +132,7 @@ public class MessageBoardManager implements Subject
 		keyword = keyword.toLowerCase();
 		for (Post post : posts)
 		{
-			if (post.getMessage().contains(keyword))
+			if (post.getMessage().toLowerCase().contains(keyword))
 			{
 				post.print();
 			}
